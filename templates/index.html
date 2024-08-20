@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Yield Prediction</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Crop Yield Prediction</h1>
+
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('learning') }}">Learning Section</a></li>
+                <li><a href="{{ url_for('financial') }}">Financial Services</a></li>
+            </ul>
+        </nav>
+
+        <form id="prediction-form">
+            <label for="State_Name">State Name:</label>
+            <select id="State_Name" name="State_Name" required onchange="updateDistricts()">
+                <option value="">Select State</option>
+                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manipur">Manipur</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="West Bengal">West Bengal</option>
+                <!-- Add more states as needed -->
+            </select><br>
+
+            <label for="District_Name">District Name:</label>
+            <select id="District_Name" name="District_Name" required>
+                <option value="">Select District</option>
+                <!-- Districts will be populated based on state selection -->
+            </select><br>
+
+            <label for="Crop_Year">Crop Year:</label>
+            <input type="number" id="Crop_Year" name="Crop_Year" required><br>
+
+            <label for="Season">Season:</label>
+            <select id="Season" name="Season" required>
+                <option value="">Select Season</option>
+                <option value="Kharif">Kharif</option>
+                <option value="Rabi">Rabi</option>
+                <option value="Whole Year">Whole Year</option>
+                <option value="Autumn">Autumn</option>
+            </select><br>
+
+            <label for="Crop">Crop:</label>
+            <input type="text" id="Crop" name="Crop" required><br>
+
+            <label for="Area">Area (in hectares):</label>
+            <input type="number" id="Area" name="Area" step="any" required><br>
+
+            <button type="button" onclick="submitForm()">Predict</button>
+        </form>
+
+        <div id="result" class="result"></div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
